@@ -1,7 +1,7 @@
 module Data.List.MoreProperties where
 
 open import Agda.Primitive using (Level; lzero; lsuc; _⊔_)
-open import Data.Maybe using (Maybe; nothing; just) renaming (map to mmap)
+open import Data.Maybe using (Maybe; nothing; just)
 open import Data.Nat
 open import Data.Nat.Properties
 open import Data.List
@@ -39,6 +39,6 @@ nth-length-+-++ (x ∷ xs) ys n = nth-length-+-++ xs ys n
 
 nth-map : (f : A → B) (xs : List A) (i : ℕ)
   → i < length xs
-  → (map f xs) ! i ≡ mmap f (xs ! i)
+  → (map f xs) ! i ≡ Data.Maybe.map f (xs ! i)
 nth-map f (x ∷ xs) zero i<xs = refl
 nth-map f (x ∷ xs) (suc i) i<xs = nth-map f xs i (≤-pred i<xs)
